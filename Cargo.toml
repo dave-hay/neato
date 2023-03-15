@@ -8,6 +8,9 @@ homepage = "https://github.com/dave-hay/neato"
 repository = "https://github.com/dave-hay/neato"
 readme = "README.md"
 
+[lib]
+name = "my_lib"
+path = "src/lib.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

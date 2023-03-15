@@ -5,6 +5,13 @@ A real neato lib.
 ## Data Structures
 
 - stack
+
+---
+
+## TODO:
+
+TODO: Data Structures
+
 - queue
 - set
 - bag
@@ -13,16 +20,14 @@ A real neato lib.
 - union find
 - [counter](https://docs.python.org/3/library/collections.html#collections.Counter)
 
-## Sorting
+TODO: Sorting
 
 - binary search
 - b
 - bubble sort
 - mergesort
--
--
 - [bisect](https://github.com/python/cpython/blob/3.11/Lib/bisect.py)
 
-## stdlib
+TODO: stdlib
 
 - [math](https://docs.python.org/3/library/math.html)
