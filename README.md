@@ -5,6 +5,7 @@ A real neato lib.
 ## Data Structures
 
 - stack
+- queue
 
 ---
 
@@ -12,7 +13,6 @@ A real neato lib.
 
 TODO: Data Structures
 
-- queue
 - set
 - bag
 - array list
