@@ -10,6 +10,17 @@ pub mod sort {
         }
     }
 
+    pub fn insertion(arr: &mut Vec<usize>) {
+        let len = arr.len();
+        for i in 1..len {
+            for j in 0..i {
+                if arr[i] < arr[j] {
+                    arr.swap(j, i);
+                }
+            }
+        }
+    }
+
     pub fn selection(arr: &mut Vec<usize>) {
         let mut i = 0;
 
@@ -38,6 +49,13 @@ mod tests {
     fn test_bubble() {
         let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
         sort::bubble(&mut v);
+        assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
+    }
+
+    #[test]
+    fn test_insertion() {
+        let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
+        sort::insertion(&mut v);
         assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
     }
 
