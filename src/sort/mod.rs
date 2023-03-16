@@ -18,3 +18,15 @@ pub mod sort {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_selection() {
+        let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
+        sort::selection(&mut v);
+        assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
+    }
+}
