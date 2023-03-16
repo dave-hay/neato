@@ -7,6 +7,10 @@ A real neato lib.
 - stack
 - queue
 
+## Sorting
+
+- selection
+
 ---
 
 ## TODO:
@@ -23,7 +27,6 @@ TODO: Data Structures
 TODO: Sorting
 
 - binary search
-- b
 - bubble sort
 - mergesort
 - [bisect](https://github.com/python/cpython/blob/3.11/Lib/bisect.py)
