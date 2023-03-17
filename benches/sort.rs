@@ -1,5 +1,5 @@
 use criterion::{criterion_group, criterion_main, BatchSize, BenchmarkId, Criterion};
-use neato::sort::sort::*;
+use neato::sort::*;
 use rand::{distributions::Uniform, prelude::*};
 
 // https://stackoverflow.com/questions/73813699/rust-criterion-how-to-pass-mutable-reference-within-bench-with-input
