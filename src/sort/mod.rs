@@ -71,6 +71,51 @@ pub mod sort {
 
         qs(arr, 0, arr.len() - 1);
     }
+
+    pub fn mergesort(nums: &mut Vec<usize>) {
+        fn sort(nums: &mut Vec<usize>, left: usize, right: usize) {
+            if left >= right {
+                return;
+            }
+
+            let mid = left + (right - left) / 2;
+            sort(nums, left, mid);
+            sort(nums, mid + 1, right);
+            merge(nums, left, mid, right);
+        }
+
+        fn merge(nums: &mut Vec<usize>, left: usize, mid: usize, right: usize) {
+            let mut tmp = Vec::with_capacity(right - left + 1);
+            let mut l_index = left;
+            let mut r_index = mid + 1;
+
+            while l_index <= mid && r_index <= right {
+                if nums[l_index] < nums[r_index] {
+                    tmp.push(nums[l_index]);
+                    l_index += 1;
+                } else {
+                    tmp.push(nums[r_index]);
+                    r_index += 1;
+                }
+            }
+
+            while l_index <= mid {
+                tmp.push(nums[l_index]);
+                l_index += 1;
+            }
+
+            while r_index <= right {
+                tmp.push(nums[r_index]);
+                r_index += 1;
+            }
+
+            for i in 0..tmp.len() {
+                nums[left + i] = tmp[i]
+            }
+        }
+
+        sort(nums, 0, nums.len() - 1);
+    }
 }
 
 #[cfg(test)]
@@ -102,6 +147,13 @@ mod tests {
     fn test_quick() {
         let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
         sort::quick(&mut v);
+        assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
+    }
+
+    #[test]
+    fn test_mergesort() {
+        let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
+        sort::mergesort(&mut v);
         assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
     }
 }
