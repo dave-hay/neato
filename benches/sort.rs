@@ -43,6 +43,14 @@ fn criterion_benchmark(c: &mut Criterion) {
                 BatchSize::SmallInput,
             )
         });
+
+        group.bench_function(BenchmarkId::new("merge sort {}", size), |b| {
+            b.iter_batched_ref(
+                || -> Vec<usize> { (0..*size).map(|_| rng.sample(&range)).collect() },
+                |v| mergesort(v),
+                BatchSize::SmallInput,
+            )
+        });
     }
     group.finish();
 }
