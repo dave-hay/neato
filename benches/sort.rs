@@ -7,10 +7,8 @@ fn criterion_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Sorting");
 
     for size in [10, 100, 1000].iter() {
-        // let mut v = rand_vec(*size);
-
         let mut rng = rand::thread_rng();
-        let range = Uniform::new(0, 100);
+        let range = Uniform::new(0, 1000);
 
         group.bench_function(BenchmarkId::new("bubble sort {}", size), |b| {
             b.iter_batched_ref(
