@@ -19,6 +19,30 @@ fn criterion_benchmark(c: &mut Criterion) {
                 BatchSize::SmallInput,
             )
         });
+
+        group.bench_function(BenchmarkId::new("insertion sort {}", size), |b| {
+            b.iter_batched_ref(
+                || -> Vec<usize> { (0..*size).map(|_| rng.sample(&range)).collect() },
+                |v| insertion(v),
+                BatchSize::SmallInput,
+            )
+        });
+
+        group.bench_function(BenchmarkId::new("selection sort {}", size), |b| {
+            b.iter_batched_ref(
+                || -> Vec<usize> { (0..*size).map(|_| rng.sample(&range)).collect() },
+                |v| selection(v),
+                BatchSize::SmallInput,
+            )
+        });
+
+        group.bench_function(BenchmarkId::new("quick sort {}", size), |b| {
+            b.iter_batched_ref(
+                || -> Vec<usize> { (0..*size).map(|_| rng.sample(&range)).collect() },
+                |v| quick(v),
+                BatchSize::SmallInput,
+            )
+        });
     }
     group.finish();
 }
