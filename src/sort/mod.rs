@@ -39,6 +39,38 @@ pub mod sort {
             i += 1;
         }
     }
+
+    pub fn quick(arr: &mut Vec<usize>) {
+        fn partition(arr: &mut Vec<usize>, low: usize, hi: usize) -> usize {
+            // right most el
+            let pivot = arr[hi];
+
+            // greater els
+            let mut i = low;
+
+            for j in low..hi {
+                if arr[j] <= pivot {
+                    arr.swap(i, j);
+                    i += 1;
+                }
+            }
+            arr.swap(i, hi);
+            i
+        }
+        fn qs(arr: &mut Vec<usize>, low: usize, hi: usize) {
+            if low < hi {
+                let pi = partition(arr, low, hi);
+
+                // usize negative issue
+                if pi > 0 {
+                    qs(arr, low, pi - 1);
+                }
+                qs(arr, pi + 1, hi);
+            }
+        }
+
+        qs(arr, 0, arr.len() - 1);
+    }
 }
 
 #[cfg(test)]
@@ -63,6 +95,13 @@ mod tests {
     fn test_selection() {
         let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
         sort::selection(&mut v);
+        assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
+    }
+
+    #[test]
+    fn test_quick() {
+        let mut v: Vec<usize> = vec![4, 1, 23, 0, 4, 3, 11, 49];
+        sort::quick(&mut v);
         assert_eq!(v, [0, 1, 3, 4, 4, 11, 23, 49]);
     }
 }
